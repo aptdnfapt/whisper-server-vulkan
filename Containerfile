@@ -32,6 +32,7 @@ FROM ubuntu:24.04
 WORKDIR /app
 
 ARG MODEL
+ENV MODEL_FILE=${MODEL}
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -48,4 +49,4 @@ COPY ${MODEL} .
 
 EXPOSe 8080
 
-CMD ["whisper-server", "-m", "ggml-large-v3-turbo-q8_0.bin", "--host", "0.0.0.0", "--port", "8080", "--inference-path", "/v1/audio/transcriptions"]
+CMD ["sh", "-c", "whisper-server -m $MODEL_FILE --host 0.0.0.0 --port 8080 --inference-path /v1/audio/transcriptions"]
