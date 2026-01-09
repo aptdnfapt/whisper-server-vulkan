@@ -1,1 +1,4 @@
 ggml-base.en-q8_0.bin
+whisper.cpp
+llama-server-vulkan
+Qwen3-0.6B-Q4_K_M.gguf
